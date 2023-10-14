@@ -6,12 +6,12 @@ plugins {
 
 group = property("group")!!
 version = property("version")!!
-val copy_dir = ""
+val copy_dir = "/Users/noobnuby"
 
 repositories {
     mavenCentral()
     maven("https://repo.papermc.io/repository/maven-public/")
-}// 포크
+}
 
 dependencies {
     implementation(kotlin("stdlib"))
