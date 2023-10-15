@@ -1,7 +1,7 @@
 package com.noobnuby.plugin
 
 import com.noobnuby.plugin.commands.Hello
-import com.noobnuby.plugin.events.JoinQuite
+import com.noobnuby.plugin.events.JoinQuit
 import org.bukkit.plugin.java.JavaPlugin
 import io.github.monun.kommand.kommand
 
@@ -18,7 +18,7 @@ class Main : JavaPlugin() {
         }
 
         server.pluginManager.apply {
-            registerEvents(JoinQuite(),this@Main)
+            registerEvents(JoinQuit(),this@Main)
         }
     }
 }
