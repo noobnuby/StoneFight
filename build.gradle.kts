@@ -6,7 +6,7 @@ plugins {
 
 group = property("group")!!
 version = property("version")!!
-val copy_dir = "/Users/noobnuby"
+val copy_dir = "${property("copy_dir")}"
 
 repositories {
     mavenCentral()
@@ -40,11 +40,14 @@ tasks {
         archiveClassifier.set("")
 
         from(sourceSets["main"].output)
-        doLast {
-            copy {
-                val dir = File("${copy_dir}")
-                from(archiveFile)
-                into(if (File(dir, archiveFileName.get()).exists()) dir else dir)
+
+        if(copy_dir != "") {
+            doLast {
+                copy {
+                    val dir = File("${copy_dir}")
+                    from(archiveFile)
+                    into(if (File(dir, archiveFileName.get()).exists()) dir else dir)
+                }
             }
         }
     }
