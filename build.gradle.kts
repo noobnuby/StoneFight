@@ -44,7 +44,7 @@ tasks {
         if(copy_dir != "") {
             doLast {
                 copy {
-                    val dir = File("${copy_dir}")
+                    val dir = File(copy_dir)
                     from(archiveFile)
                     into(if (File(dir, archiveFileName.get()).exists()) dir else dir)
                 }
