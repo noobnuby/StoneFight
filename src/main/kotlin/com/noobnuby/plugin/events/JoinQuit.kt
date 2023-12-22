@@ -10,6 +10,6 @@ class JoinQuit: Listener {
     @EventHandler
     fun JoinQuite(e:PlayerJoinEvent) {
         val p = e.player
-        e.joinMessage(Component.text("${p}님이 서버에 접속하셨습니다").color(NamedTextColor.YELLOW))
+        e.joinMessage(Component.text("${p.name}님이 서버에 접속하셨습니다").color(NamedTextColor.YELLOW))
     }
 }
