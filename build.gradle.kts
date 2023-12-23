@@ -16,7 +16,7 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib"))
     implementation(kotlin("reflect"))
-    implementation("io.github.monun:kommand-api:3.1.8")
+    implementation(files("libs/kommand-api-3.1.8.jar"))
     compileOnly("io.papermc.paper:paper-api:${property("paper_version")}-R0.1-SNAPSHOT")
 }
 
