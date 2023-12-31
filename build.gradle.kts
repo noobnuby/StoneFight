@@ -1,7 +1,8 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.9.0"
+    kotlin("jvm") version "1.9.22"
+    id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
 group = property("group")!!
@@ -10,6 +11,10 @@ val copy_dir = "${property("copy_dir")}"
 
 repositories {
     mavenCentral()
+    mavenLocal()
+    flatDir {
+        dirs("libs")
+    }
     maven("https://repo.papermc.io/repository/maven-public/")
 }
 
