@@ -1,8 +1,6 @@
 package com.noobnuby.plugin.commands
 
-import com.noobnuby.plugin.Main
-import io.github.monun.kommand.PluginKommand
-import io.github.monun.kommand.kommand
+import xyz.icetang.lib.kommand.PluginKommand
 
 object Hello {
     fun register(kommand: PluginKommand) {
