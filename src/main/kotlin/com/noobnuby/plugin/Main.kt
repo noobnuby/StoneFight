@@ -1,7 +1,11 @@
 package com.noobnuby.plugin
 
 import com.noobnuby.plugin.commands.Hello
-import com.noobnuby.plugin.events.JoinQuit
+import com.noobnuby.plugin.events.BlockBreakEvent
+import com.noobnuby.plugin.events.DeathEvent
+import com.noobnuby.plugin.events.LeftClickEvent
+import org.bukkit.Bukkit
+import org.bukkit.GameRule
 import org.bukkit.plugin.java.JavaPlugin
 import xyz.icetang.lib.kommand.kommand
 
@@ -17,8 +21,14 @@ class Main : JavaPlugin() {
             Hello.register(this)
         }
 
+        val world = Bukkit.getWorld("world")!!
+        world.setGameRule(GameRule.KEEP_INVENTORY, true)
+        world.setGameRule(GameRule.DO_IMMEDIATE_RESPAWN, true)
+
         server.pluginManager.apply {
-            registerEvents(JoinQuit(),this@Main)
+            registerEvents(BlockBreakEvent(),this@Main)
+            registerEvents(DeathEvent(),this@Main)
+            registerEvents(LeftClickEvent(),this@Main)
         }
     }
 }

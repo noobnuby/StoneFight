@@ -1,6 +1,6 @@
-# Kotlin Plugin Template
+# StoneFight
 
-코틀린 PaperMC Plugin 템플릿입니다.
+각별님의 [석전](https://www.youtube.com/watch?v=FqAD6Z2Ivoo) 플러그인
 
 # Library
 
