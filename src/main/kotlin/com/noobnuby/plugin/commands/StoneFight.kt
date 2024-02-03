@@ -4,12 +4,9 @@ import com.noobnuby.plugin.Main.Companion.isGameStart
 import com.noobnuby.plugin.team.Team
 import com.noobnuby.plugin.team.TeamCore.BLUE_SPAWN
 import com.noobnuby.plugin.team.TeamCore.RED_SPAWN
-import com.noobnuby.plugin.team.TeamCore.bossbarRed
 import com.noobnuby.plugin.team.TeamCore.playerTeam
-import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.NamedTextColor
 import org.bukkit.Bukkit
-import org.bukkit.ChatColor
 import xyz.icetang.lib.kommand.PluginKommand
 
 object StoneFight {
