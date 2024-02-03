@@ -1,5 +1,7 @@
 package com.noobnuby.plugin.events
 
+import com.noobnuby.plugin.Main
+import org.bukkit.GameMode
 import org.bukkit.Material
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -35,5 +37,8 @@ class DeathEvent:Listener {
                 }
             }
         }
+
+        p.gameMode = GameMode.SPECTATOR
+        Main.PlayerRespawnTime.put(p,10*20)
     }
 }

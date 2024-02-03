@@ -8,13 +8,13 @@
 
 # Configuration
 
-gradle.properties
+## 서버 여실때 꼭 아래의 세팅으로 열어주시길 바랍니다
 
-```gradle
-group=com.noobnuby.plugin (group)
-version=1.0.0 (ver)
-paper_version=1.20.2 (papermc ver)
-copy_dir=/Users/noobnuby (copy folder !not str) 
+spigot.yml
+
+```yml
+merge-radius:
+  item: 0
 ```
 
 # Build
