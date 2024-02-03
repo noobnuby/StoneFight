@@ -30,28 +30,36 @@ object StoneFight {
                     var red = board.getTeam("RED")
                     var blue = board.getTeam("BLUE")
                     if (red == null&&blue == null) {
+
                         red = board.registerNewTeam("RED")
                         red.color(NamedTextColor.RED)
                         blue = board.registerNewTeam("BLUE")
                         blue.color(NamedTextColor.BLUE)
+
                     }else {
+
                         red?.unregister()
                         blue?.unregister()
                         red = board.registerNewTeam("RED")
                         red.color(NamedTextColor.RED)
                         blue = board.registerNewTeam("BLUE")
                         blue.color(NamedTextColor.BLUE)
+
                     }
 
                     shuffledPlayers.forEach {
                         if (players < size / 2) {
+
                             playerTeam[it] = Team.RED
                             it.teleport(RED_SPAWN)
                             red.addPlayer(it)
+
                         } else {
+
                             playerTeam[it] = Team.BLUE
                             it.teleport(BLUE_SPAWN)
                             blue.addPlayer(it)
+
                         }
                         players++
                     }
