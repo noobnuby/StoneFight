@@ -5,6 +5,7 @@ import com.noobnuby.plugin.events.*
 import com.noobnuby.plugin.handlers.Scheduler
 import org.bukkit.Bukkit
 import org.bukkit.GameRule
+import org.bukkit.Location
 import org.bukkit.entity.ItemDisplay
 import org.bukkit.entity.Player
 import org.bukkit.entity.Snowball
@@ -30,6 +31,7 @@ class Main : JavaPlugin() {
         val world = Bukkit.getWorld("world")!!
         world.setGameRule(GameRule.KEEP_INVENTORY, true)
         world.setGameRule(GameRule.DO_IMMEDIATE_RESPAWN, true)
+        world.setSpawnLocation(Location(world, 0.5, 53.5, 0.5))
 
         server.pluginManager.apply {
             registerEvents(BlockBreakEvent(),this@Main)
@@ -37,6 +39,7 @@ class Main : JavaPlugin() {
             registerEvents(LeftClickEvent(),this@Main)
             registerEvents(PlayerDamagerEvent(),this@Main)
             registerEvents(ProjectileHitEvent(),this@Main)
+            registerEvents(PlayerMoveEvent(),this@Main)
         }
 
         Scheduler.start()

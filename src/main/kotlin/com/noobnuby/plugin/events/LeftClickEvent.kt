@@ -1,6 +1,5 @@
 package com.noobnuby.plugin.events
 
-import com.noobnuby.plugin.ItemDisplayData
 import org.bukkit.Material
 import org.bukkit.Sound
 import org.bukkit.block.data.BlockData

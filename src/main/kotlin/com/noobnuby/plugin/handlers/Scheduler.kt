@@ -1,9 +1,9 @@
 package com.noobnuby.plugin.handlers
 
-import com.noobnuby.plugin.ItemDisplayData
 import com.noobnuby.plugin.Main
 import com.noobnuby.plugin.Main.Companion.PlayerRespawnTime
 import com.noobnuby.plugin.team.Team
+import com.noobnuby.plugin.team.TeamCore
 import com.noobnuby.plugin.team.TeamCore.BLUE_SPAWN
 import com.noobnuby.plugin.team.TeamCore.RED_SPAWN
 import com.noobnuby.plugin.team.TeamCore.playerTeam
@@ -17,7 +17,10 @@ object Scheduler {
 
     fun start() {
         scheduleId = Main.INSTANCE.server.scheduler.runTaskTimer(Main.INSTANCE, Runnable {
-
+            if(Main.isGameStart) {
+                TeamCore.bossbarBlue.progress(TeamCore.BLUE_CORE_HP.toFloat() / 200.0F)
+                TeamCore.bossbarRed.progress(TeamCore.RED_CORE_HP.toFloat() / 200.0F)
+            }
             PlayerRespawnTime.forEach {
                 val p = it.key
                 val timer = it.value

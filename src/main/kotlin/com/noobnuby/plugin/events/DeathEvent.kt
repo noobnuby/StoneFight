@@ -16,6 +16,8 @@ class DeathEvent:Listener {
         val items = inventory.contents
         var sum = 0
 
+        if (!Main.isGameStart) return
+
         items.forEach { item ->
             if (item != null && item.type == Material.COBBLESTONE) {
                 sum += item.amount
