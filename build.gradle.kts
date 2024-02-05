@@ -21,7 +21,7 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib"))
     implementation(kotlin("reflect"))
-    implementation("xyz.icetang.lib:kommand-api:3.1.10")
+    implementation("xyz.icetang.lib:kommand-api:3.1.11")
     compileOnly("io.papermc.paper:paper-api:${property("paper_version")}-R0.1-SNAPSHOT")
 }
 

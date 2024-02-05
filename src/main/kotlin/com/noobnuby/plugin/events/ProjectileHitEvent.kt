@@ -19,7 +19,6 @@ import org.bukkit.entity.Snowball
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.ProjectileHitEvent
-import org.bukkit.event.server.BroadcastMessageEvent
 import org.bukkit.inventory.ItemStack
 
 class ProjectileHitEvent : Listener {
@@ -46,24 +45,36 @@ class ProjectileHitEvent : Listener {
                 stone.world.playSound(stone.location, Sound.BLOCK_STONE_BREAK, 1f, 1f)
             } else if (e.hitBlock != null && e.hitBlock is Block) {
                 val block = e.hitBlock!!
-                if (block.type == Material.COBBLESTONE) {
-                    val random = (Math.random() * 100 + 1).toInt()
-                    if (random < 10) {
-                        block.breakNaturally(ItemStack(Material.NETHERITE_PICKAXE))
-                    }
+                val random = (Math.random() * 100 + 1).toInt()
+                if (random < 10) {
+                    block.breakNaturally(ItemStack(Material.NETHERITE_PICKAXE))
                 }
                 if (block.location == TeamCore.RED_CORE) {
                     if (playerTeam[e.entity.shooter] == Team.RED) return
                     TeamCore.RED_CORE_HP -= 1
                     Bukkit.getOnlinePlayers().forEach {
-                        if (playerTeam[it] == Team.RED) it.sendMessage(Component.text("코어가 공격당하고 있습니다!",NamedTextColor.RED))
+                        if (playerTeam[it] == Team.RED) it.sendMessage(
+                            Component.text(
+                                "코어가 공격당하고 있습니다!",
+                                NamedTextColor.RED
+                            )
+                        )
                     }
                     if (TeamCore.RED_CORE_HP == 0) {
                         isGameStart = false
                         Bukkit.getOnlinePlayers().forEach {
-                            if(playerTeam[it] == Team.BLUE) it.playSound(it.location,Sound.UI_TOAST_CHALLENGE_COMPLETE,1f,1f)
-                            it.showTitle(Title.title(MiniMessage.miniMessage().deserialize("<blue>블루팀<white> 승리!"),
-                                Component.empty()))
+                            if (playerTeam[it] == Team.BLUE) it.playSound(
+                                it.location,
+                                Sound.UI_TOAST_CHALLENGE_COMPLETE,
+                                1f,
+                                1f
+                            )
+                            it.showTitle(
+                                Title.title(
+                                    MiniMessage.miniMessage().deserialize("<blue>블루팀<white> 승리!"),
+                                    Component.empty()
+                                )
+                            )
                             it.hideBossBar(TeamCore.bossbarRed)
                             it.hideBossBar(TeamCore.bossbarBlue)
                         }
@@ -73,14 +84,23 @@ class ProjectileHitEvent : Listener {
                     if (playerTeam[e.entity.shooter] == Team.BLUE) return
                     TeamCore.BLUE_CORE_HP -= 1
                     Bukkit.getOnlinePlayers().forEach {
-                        if (playerTeam[it] == Team.BLUE) it.sendMessage(Component.text("코어가 공격당하고 있습니다!",NamedTextColor.RED))
+                        if (playerTeam[it] == Team.BLUE) it.sendMessage(
+                            Component.text(
+                                "코어가 공격당하고 있습니다!",
+                                NamedTextColor.RED
+                            )
+                        )
                     }
                     if (TeamCore.BLUE_CORE_HP == 0) {
                         isGameStart = false
                         Bukkit.getOnlinePlayers().forEach {
-                            it.playSound(it.location,Sound.UI_TOAST_CHALLENGE_COMPLETE,1f,1f)
-                            it.showTitle(Title.title(MiniMessage.miniMessage().deserialize("<red>레드팀<white> 승리!"),
-                                Component.empty()))
+                            it.playSound(it.location, Sound.UI_TOAST_CHALLENGE_COMPLETE, 1f, 1f)
+                            it.showTitle(
+                                Title.title(
+                                    MiniMessage.miniMessage().deserialize("<red>레드팀<white> 승리!"),
+                                    Component.empty()
+                                )
+                            )
                             it.hideBossBar(TeamCore.bossbarRed)
                             it.hideBossBar(TeamCore.bossbarBlue)
                         }

@@ -1,5 +1,6 @@
 package com.noobnuby.plugin.events
 
+import org.bukkit.GameMode
 import org.bukkit.Material
 import org.bukkit.Sound
 import org.bukkit.block.data.BlockData
@@ -21,7 +22,7 @@ class LeftClickEvent:Listener {
     fun onLeftClick(e:PlayerInteractEvent) {
         val item = e.item
         val p = e.player
-        if (item != null && item.type == Material.COBBLESTONE && e.action == Action.LEFT_CLICK_AIR&&p.getCooldown(Material.COBBLESTONE) == 0) {
+        if (p.gameMode == GameMode.SURVIVAL&&item != null && item.type == Material.COBBLESTONE && e.action == Action.LEFT_CLICK_AIR&&p.getCooldown(Material.COBBLESTONE) == 0) {
             item.amount -= 1
             p.playSound(p.location, Sound.ENTITY_ARROW_SHOOT, 0.5f, 0.5f)
             val stone = p.world.spawn(p.eyeLocation, Snowball::class.java)
