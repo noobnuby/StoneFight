@@ -14,11 +14,11 @@ import org.bukkit.util.Vector
 class BlockBreakEvent:Listener {
     @EventHandler
     fun onBlockBreakEvent(e: BlockBreakEvent) {
+        val p = e.player
         if (!isGameStart) {
+            if (p.isOp) return
             e.isCancelled = true
         }
-
-        val p = e.player
         val hand = p.inventory.itemInMainHand
         if (hand.type == Material.STONE_PICKAXE && e.block.type == Material.COBBLESTONE && p.gameMode == GameMode.SURVIVAL && e.block.getSideBlocksType().contains(Material.LAVA) && e.block.getSideBlocksType().contains(Material.WATER)) {
             e.isDropItems = false
