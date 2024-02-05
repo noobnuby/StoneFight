@@ -1,5 +1,6 @@
 package com.noobnuby.plugin.events
 
+import com.noobnuby.plugin.Main.Companion.isGameStart
 import org.bukkit.GameMode
 import org.bukkit.Material
 import org.bukkit.block.Block
@@ -13,6 +14,10 @@ import org.bukkit.util.Vector
 class BlockBreakEvent:Listener {
     @EventHandler
     fun onBlockBreakEvent(e: BlockBreakEvent) {
+        if (!isGameStart) {
+            e.isCancelled = true
+        }
+
         val p = e.player
         val hand = p.inventory.itemInMainHand
         if (hand.type == Material.STONE_PICKAXE && e.block.type == Material.COBBLESTONE && p.gameMode == GameMode.SURVIVAL && e.block.getSideBlocksType().contains(Material.LAVA) && e.block.getSideBlocksType().contains(Material.WATER)) {

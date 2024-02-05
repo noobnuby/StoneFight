@@ -45,9 +45,11 @@ class ProjectileHitEvent : Listener {
                 stone.world.playSound(stone.location, Sound.BLOCK_STONE_BREAK, 1f, 1f)
             } else if (e.hitBlock != null && e.hitBlock is Block) {
                 val block = e.hitBlock!!
-                val random = (Math.random() * 100 + 1).toInt()
-                if (random < 10) {
-                    block.breakNaturally(ItemStack(Material.NETHERITE_PICKAXE))
+                if (block.type != Material.RED_CONCRETE || block.type != Material.BLUE_CONCRETE) {
+                    val random = (Math.random() * 100 + 1).toInt()
+                    if (random < 10) {
+                        block.breakNaturally(ItemStack(Material.NETHERITE_PICKAXE))
+                    }
                 }
                 if (block.location == TeamCore.RED_CORE) {
                     if (playerTeam[e.entity.shooter] == Team.RED) return
