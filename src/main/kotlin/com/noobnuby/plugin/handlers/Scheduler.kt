@@ -37,7 +37,7 @@ object Scheduler {
 
                 p.sendActionBar(actionBarText)
 
-                if (PlayerRespawnTime[p]!! == 0) {
+                if (PlayerRespawnTime[p]!! <= 0&&p.isOnline) {
                     PlayerRespawnTime.remove(p)
                     p.sendActionBar(Component.text("부활함!", NamedTextColor.YELLOW))
                     p.gameMode = GameMode.SURVIVAL
