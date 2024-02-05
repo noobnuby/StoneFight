@@ -7,12 +7,12 @@ import org.bukkit.event.block.BlockPlaceEvent
 
 class BlockPlaceEvent:Listener {
     @EventHandler
-    fun onBlockPlace(event: BlockPlaceEvent) {
-        val block = event.blockAgainst
-        val type = block.type
+    fun onBlockPlace(e: BlockPlaceEvent) {
+        val blockAgainst = e.blockReplacedState
+        val type = blockAgainst.type
 
         if (type == Material.WATER || type == Material.LAVA) {
-            event.isCancelled = true
+            e.isCancelled = true
         }
     }
 }
