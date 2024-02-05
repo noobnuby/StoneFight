@@ -6,6 +6,11 @@
 
 * [Kommand](https://github.com/monun/kommand)
 
+# Start
+
+`/sf start` : 게임 시작   
+`/sf setting <Team> <Player>` : 플레이어의 팀을 세팅할 수 있음 (기본 값 : 랜덤) 
+
 # Configuration
 
 ## 서버 여실때 꼭 아래의 세팅으로 열어주시길 바랍니다
