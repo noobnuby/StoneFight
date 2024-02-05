@@ -9,6 +9,7 @@ import org.bukkit.GameRule
 import org.bukkit.Location
 import org.bukkit.entity.Player
 import org.bukkit.plugin.java.JavaPlugin
+import org.bukkit.scoreboard.Team
 import xyz.icetang.lib.kommand.kommand
 
 class Main : JavaPlugin() {
@@ -44,19 +45,7 @@ class Main : JavaPlugin() {
             registerEvents(BucketEvent(), this@Main)
         }
 
-        setUpTeam()
+        StoneFight.setUpTeams()
         Scheduler.start()
-    }
-
-    fun setUpTeam() {
-        val manager = Bukkit.getScoreboardManager()
-        val board = manager.mainScoreboard
-
-        board.getTeam("BLUE")!!.unregister()
-        board.getTeam("RED")!!.unregister()
-        val red = board.registerNewTeam("RED")
-        red.color(NamedTextColor.RED)
-        val blue = board.registerNewTeam("BLUE")
-        blue.color(NamedTextColor.BLUE)
     }
 }

@@ -5,19 +5,35 @@ import com.noobnuby.plugin.team.Team
 import com.noobnuby.plugin.team.TeamCore.BLUE_SPAWN
 import com.noobnuby.plugin.team.TeamCore.RED_SPAWN
 import com.noobnuby.plugin.team.TeamCore.playerTeam
+import net.kyori.adventure.text.format.NamedTextColor
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import xyz.icetang.lib.kommand.PluginKommand
-import xyz.icetang.lib.kommand.getValue
 
 object StoneFight {
     val manager = Bukkit.getScoreboardManager()
     val board = manager.mainScoreboard
 
-    val red = board.getTeam("RED")!!
-    val blue = board.getTeam("BLUE")!!
+    lateinit var red: org.bukkit.scoreboard.Team
+    lateinit var blue: org.bukkit.scoreboard.Team
 
     private var setting = false
+
+    fun setUpTeams() {
+        if (board.getTeam("RED") != null) {
+            board.getTeam("RED")!!.unregister()
+        }
+        red = board.registerNewTeam("RED").apply {
+            color(NamedTextColor.RED)
+        }
+
+        if (board.getTeam("BLUE") != null) {
+            board.getTeam("BLUE")!!.unregister()
+        }
+        blue = board.registerNewTeam("BLUE").apply {
+            color(NamedTextColor.BLUE)
+        }
+    }
     fun register(kommand: PluginKommand) {
         kommand.register("sf") {
             requires { isOp&&isPlayer}
